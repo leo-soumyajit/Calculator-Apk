@@ -2,13 +2,14 @@
 <resources>
     <style name="CalcButton" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item> <!-- Force height to scale with weight -->
-        <item name="android:layout_margin">3dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">4dp</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:layout_rowWeight">1</item>
-        <item name="android:textSize">18sp</item> <!-- Slightly smaller -->
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:backgroundTint">#333333</item>
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">16dp</item>
     </style>
 </resources>
+

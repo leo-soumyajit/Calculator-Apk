@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#121212"
-    android:padding="12dp"
+    android:padding="16dp"
     android:gravity="center"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
+    <!-- Expression Input -->
     <EditText
         android:id="@+id/editTextExpression"
         android:layout_width="match_parent"
@@ -24,6 +25,7 @@
         android:cursorVisible="false"
         android:padding="4dp" />
 
+    <!-- Result Display -->
     <TextView
         android:id="@+id/textViewResult"
         android:layout_width="match_parent"
@@ -34,6 +36,43 @@
         android:gravity="end"
         android:paddingBottom="10dp" />
 
+    <!-- Toggle Button -->
+    <Button
+        android:id="@+id/buttonToggleScientific"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scientific"
+        android:layout_gravity="end"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#444444"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Scientific Functions -->
+    <GridLayout
+        android:id="@+id/scientificLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:rowCount="3"
+        android:visibility="gone"
+        android:padding="4dp"
+        android:layout_marginBottom="8dp">
+
+        <Button android:id="@+id/buttonSin" style="@style/CalcButton" android:text="sin" />
+        <Button android:id="@+id/buttonCos" style="@style/CalcButton" android:text="cos" />
+        <Button android:id="@+id/buttonTan" style="@style/CalcButton" android:text="tan" />
+        <Button android:id="@+id/buttonLog" style="@style/CalcButton" android:text="log" />
+
+        <Button android:id="@+id/buttonLn" style="@style/CalcButton" android:text="ln" />
+        <Button android:id="@+id/buttonSqrt" style="@style/CalcButton" android:text="√" />
+        <Button android:id="@+id/buttonPower" style="@style/CalcButton" android:text="^" />
+        <Button android:id="@+id/buttonPi" style="@style/CalcButton" android:text="π" />
+
+        <Button android:id="@+id/buttonFactorial" style="@style/CalcButton" android:text="!" />
+    </GridLayout>
+
+    <!-- Basic Calculator Grid -->
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -44,31 +83,26 @@
         android:padding="4dp"
         android:columnOrderPreserved="false">
 
-        <!-- Row 1 -->
         <Button android:id="@+id/buttonClear" style="@style/CalcButton" android:text="C" />
         <Button android:id="@+id/buttonOpen" style="@style/CalcButton" android:text="(" />
         <Button android:id="@+id/buttonClose" style="@style/CalcButton" android:text=")" />
         <Button android:id="@+id/buttonDivide" style="@style/CalcButton" android:text="/" />
 
-        <!-- Row 2 -->
         <Button android:id="@+id/button7" style="@style/CalcButton" android:text="7" />
         <Button android:id="@+id/button8" style="@style/CalcButton" android:text="8" />
         <Button android:id="@+id/button9" style="@style/CalcButton" android:text="9" />
         <Button android:id="@+id/buttonMultiply" style="@style/CalcButton" android:text="*" />
 
-        <!-- Row 3 -->
         <Button android:id="@+id/button4" style="@style/CalcButton" android:text="4" />
         <Button android:id="@+id/button5" style="@style/CalcButton" android:text="5" />
         <Button android:id="@+id/button6" style="@style/CalcButton" android:text="6" />
         <Button android:id="@+id/buttonMinus" style="@style/CalcButton" android:text="-" />
 
-        <!-- Row 4 -->
         <Button android:id="@+id/button1" style="@style/CalcButton" android:text="1" />
         <Button android:id="@+id/button2" style="@style/CalcButton" android:text="2" />
         <Button android:id="@+id/button3" style="@style/CalcButton" android:text="3" />
         <Button android:id="@+id/buttonPlus" style="@style/CalcButton" android:text="+" />
 
-        <!-- Row 5 -->
         <Button android:id="@+id/button0" style="@style/CalcButton" android:text="0" />
         <Button android:id="@+id/buttonDot" style="@style/CalcButton" android:text="." />
         <Button android:id="@+id/buttonBackspace" style="@style/CalcButton" android:text="⌫" />
