@@ -25,11 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         // Toggle visibility
         toggleButton.setOnClickListener {
-            if (scientificLayout.visibility == View.VISIBLE) {
-                scientificLayout.visibility = View.GONE
-            } else {
-                scientificLayout.visibility = View.VISIBLE
-            }
+            scientificLayout.visibility =
+                if (scientificLayout.visibility == View.VISIBLE) View.GONE else View.VISIBLE
         }
 
         // Basic Buttons
@@ -72,10 +69,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Evaluate
+        // Evaluate expression
         findViewById<Button>(R.id.buttonEquals).setOnClickListener {
             try {
-                val expression = ExpressionBuilder(inputField.text.toString()).build()
+                val preprocessed = preprocessFactorial(inputField.text.toString())
+                val expression = ExpressionBuilder(preprocessed).build()
                 val result = expression.evaluate()
                 resultView.text = result.toString()
             } catch (e: Exception) {
@@ -88,5 +86,23 @@ class MainActivity : AppCompatActivity() {
         val current = inputField.text.toString()
         inputField.setText(current + value)
         inputField.setSelection(inputField.text.length)
+    }
+
+    private fun preprocessFactorial(expression: String): String {
+        // Replace all occurrences like 5! with their factorial result
+        val regex = Regex("""(\d+)!""")
+        return regex.replace(expression) {
+            val number = it.groupValues[1].toInt()
+            factorial(number).toString()
+        }
+    }
+
+    private fun factorial(n: Int): Long {
+        if (n < 0) throw IllegalArgumentException("Negative factorial not allowed")
+        var result = 1L
+        for (i in 2..n) {
+            result *= i
+        }
+        return result
     }
 }
