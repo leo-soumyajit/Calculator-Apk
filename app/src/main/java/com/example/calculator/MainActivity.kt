@@ -1,11 +1,11 @@
 package com.example.calculator
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import net.objecthunter.exp4j.ExpressionBuilder
+import net.objecthunter.exp4j.function.Function
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,7 +73,25 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonEquals).setOnClickListener {
             try {
                 val preprocessed = preprocessFactorial(inputField.text.toString())
-                val expression = ExpressionBuilder(preprocessed).build()
+
+                // Define ln (natural log) and log (base 10)
+                val ln = object : Function("ln", 1) {
+                    override fun apply(vararg args: Double): Double {
+                        return Math.log(args[0])
+                    }
+                }
+
+                val log = object : Function("log", 1) {
+                    override fun apply(vararg args: Double): Double {
+                        return Math.log10(args[0])
+                    }
+                }
+
+                val expression = ExpressionBuilder(preprocessed)
+                    .function(ln)
+                    .function(log)
+                    .build()
+
                 val result = expression.evaluate()
                 resultView.text = result.toString()
             } catch (e: Exception) {
