@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var inputField: EditText
     private lateinit var resultView: TextView
     private lateinit var scientificLayout: GridLayout
@@ -15,14 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Fullscreen
-        window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                        View.SYSTEM_UI_FLAG_FULLSCREEN
-                )
-
         setContentView(R.layout.activity_main)
 
         inputField = findViewById(R.id.editTextExpression)
@@ -30,13 +23,16 @@ class MainActivity : AppCompatActivity() {
         scientificLayout = findViewById(R.id.scientificLayout)
         toggleButton = findViewById(R.id.buttonToggleScientific)
 
-        // Toggle visibility of scientific buttons
+        // Toggle visibility
         toggleButton.setOnClickListener {
-            scientificLayout.visibility =
-                if (scientificLayout.visibility == View.GONE) View.VISIBLE else View.GONE
+            if (scientificLayout.visibility == View.VISIBLE) {
+                scientificLayout.visibility = View.GONE
+            } else {
+                scientificLayout.visibility = View.VISIBLE
+            }
         }
 
-        // Basic buttons
+        // Basic Buttons
         val basicButtons = mapOf(
             R.id.button0 to "0", R.id.button1 to "1", R.id.button2 to "2",
             R.id.button3 to "3", R.id.button4 to "4", R.id.button5 to "5",
@@ -47,27 +43,21 @@ class MainActivity : AppCompatActivity() {
         )
 
         basicButtons.forEach { (id, value) ->
-            findViewById<Button>(id).setOnClickListener {
-                appendInput(value)
-            }
+            findViewById<Button>(id).setOnClickListener { appendToInput(value) }
         }
 
-        // Scientific buttons
+        // Scientific Buttons
         val scientificButtons = mapOf(
-            R.id.buttonSin to "sin(", R.id.buttonCos to "cos(",
-            R.id.buttonTan to "tan(", R.id.buttonLog to "log(",
-            R.id.buttonLn to "ln(", R.id.buttonSqrt to "sqrt(",
-            R.id.buttonPower to "^", R.id.buttonPi to "3.1415926535",
-            R.id.buttonFactorial to "!"
+            R.id.buttonSin to "sin(", R.id.buttonCos to "cos(", R.id.buttonTan to "tan(",
+            R.id.buttonLog to "log(", R.id.buttonLn to "ln(", R.id.buttonSqrt to "sqrt(",
+            R.id.buttonPower to "^", R.id.buttonPi to "3.1415926535", R.id.buttonFactorial to "!"
         )
 
         scientificButtons.forEach { (id, value) ->
-            findViewById<Button>(id).setOnClickListener {
-                appendInput(value)
-            }
+            findViewById<Button>(id).setOnClickListener { appendToInput(value) }
         }
 
-        // Clear input
+        // Clear
         findViewById<Button>(R.id.buttonClear).setOnClickListener {
             inputField.text.clear()
             resultView.text = "0"
@@ -94,10 +84,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun appendInput(value: String) {
+    private fun appendToInput(value: String) {
         val current = inputField.text.toString()
-        val newText = current + value
-        inputField.text = Editable.Factory.getInstance().newEditable(newText)
-        inputField.setSelection(newText.length)
+        inputField.setText(current + value)
+        inputField.setSelection(inputField.text.length)
     }
 }
