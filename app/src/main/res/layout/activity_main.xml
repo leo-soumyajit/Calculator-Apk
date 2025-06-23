@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212"
+    android:padding="12dp"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editTextExpression"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:hint="0"
+        android:gravity="end"
+        android:background="@android:color/transparent"
+        android:textColor="#FFFFFF"
+        android:inputType="none"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#00FF00"
+        android:textSize="35sp"
+        android:gravity="end"
+        android:paddingBottom="10dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="4"
+        android:rowCount="5"
+        android:alignmentMode="alignMargins"
+        android:padding="4dp"
+        android:columnOrderPreserved="false">
+
+        <!-- Row 1 -->
+        <Button android:id="@+id/buttonClear" style="@style/CalcButton" android:text="C" />
+        <Button android:id="@+id/buttonOpen" style="@style/CalcButton" android:text="(" />
+        <Button android:id="@+id/buttonClose" style="@style/CalcButton" android:text=")" />
+        <Button android:id="@+id/buttonDivide" style="@style/CalcButton" android:text="/" />
+
+        <!-- Row 2 -->
+        <Button android:id="@+id/button7" style="@style/CalcButton" android:text="7" />
+        <Button android:id="@+id/button8" style="@style/CalcButton" android:text="8" />
+        <Button android:id="@+id/button9" style="@style/CalcButton" android:text="9" />
+        <Button android:id="@+id/buttonMultiply" style="@style/CalcButton" android:text="*" />
+
+        <!-- Row 3 -->
+        <Button android:id="@+id/button4" style="@style/CalcButton" android:text="4" />
+        <Button android:id="@+id/button5" style="@style/CalcButton" android:text="5" />
+        <Button android:id="@+id/button6" style="@style/CalcButton" android:text="6" />
+        <Button android:id="@+id/buttonMinus" style="@style/CalcButton" android:text="-" />
+
+        <!-- Row 4 -->
+        <Button android:id="@+id/button1" style="@style/CalcButton" android:text="1" />
+        <Button android:id="@+id/button2" style="@style/CalcButton" android:text="2" />
+        <Button android:id="@+id/button3" style="@style/CalcButton" android:text="3" />
+        <Button android:id="@+id/buttonPlus" style="@style/CalcButton" android:text="+" />
+
+        <!-- Row 5 -->
+        <Button android:id="@+id/button0" style="@style/CalcButton" android:text="0" />
+        <Button android:id="@+id/buttonDot" style="@style/CalcButton" android:text="." />
+        <Button android:id="@+id/buttonBackspace" style="@style/CalcButton" android:text="⌫" />
+        <Button android:id="@+id/buttonEquals" style="@style/CalcButton" android:text="=" />
+    </GridLayout>
+
+    <!-- Footer -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="©2025 Made with ❤️ by Soumyajit"
+        android:textSize="12sp"
+        android:textColor="#AAAAAA"
+        android:layout_gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp" />
+</LinearLayout>
