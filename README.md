@@ -2,7 +2,7 @@
 
 A powerful and intuitive scientific calculator built for Android with a beautiful companion website for feature showcase and APK distribution.
 
-> 🌐 **Can be accessed**: [https://quantix-calculator-website.vercel.app](https://quantix-calculator-website.vercel.app)
+> 🌐 **Download the APK file**: [https://quantix-calculator-website.vercel.app](https://quantix-calculator-website.vercel.app)
 
 ---
 
@@ -35,6 +35,7 @@ A powerful and intuitive scientific calculator built for Android with a beautifu
 
 ## 🧠 How to Use
 
+🌐 **Can be accessed**: [https://quantix-calculator-website.vercel.app](https://quantix-calculator-website.vercel.app)
 ### 📦 Clone the Repository
 ```bash
 For App : https://github.com/leo-soumyajit/Calculator-Apk.git
